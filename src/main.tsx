@@ -49,6 +49,7 @@ function App() {
           {socialLinks.map(({ href, label, Icon, external }) => (
             <a
               className="social-link"
+              aria-label={label}
               href={href}
               key={label}
               rel={external ? "noreferrer" : undefined}
