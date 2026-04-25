@@ -1,6 +1,6 @@
 :root {
   color: #1f2528;
-  background: #f7f3ec;
+  background: #f6f7f5;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -29,46 +29,27 @@ a {
   min-height: 100vh;
   place-items: center;
   padding: 32px;
-  background:
-    linear-gradient(135deg, rgba(36, 116, 109, 0.2), transparent 38%),
-    linear-gradient(315deg, rgba(190, 64, 51, 0.16), transparent 40%),
-    #f7f3ec;
+  background: #f6f7f5;
 }
 
 .intro {
   width: min(100%, 760px);
-}
-
-.eyebrow {
-  margin: 0 0 18px;
-  color: #24746d;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  text-align: center;
 }
 
 h1 {
-  max-width: 9ch;
   margin: 0;
   color: #162022;
-  font-size: clamp(4rem, 14vw, 8.5rem);
-  line-height: 0.9;
-}
-
-.lede {
-  max-width: 620px;
-  margin: 28px 0 0;
-  color: #465154;
-  font-size: clamp(1.15rem, 3vw, 1.55rem);
-  line-height: 1.5;
+  font-size: clamp(2.75rem, 10vw, 6rem);
+  line-height: 1;
 }
 
 .actions {
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 34px;
+  margin-top: 28px;
 }
 
 .actions a {
@@ -96,7 +77,6 @@ h1 {
 
 @media (max-width: 520px) {
   .page-shell {
-    align-items: end;
     padding: 24px;
   }
 
