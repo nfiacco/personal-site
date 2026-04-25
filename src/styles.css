@@ -55,6 +55,85 @@ h2 {
   line-height: 1.35;
 }
 
+.award {
+  position: relative;
+  display: inline-block;
+}
+
+.award-trigger {
+  border: 0;
+  border-bottom: 1px solid rgba(47, 59, 57, 0.35);
+  padding: 0 0 3px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: 0;
+}
+
+.award-trigger:hover,
+.award-trigger:focus-visible {
+  color: #2f6f5f;
+}
+
+.award-trigger:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid rgba(47, 111, 95, 0.45);
+  outline-offset: 5px;
+}
+
+.score-popover {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 16px);
+  left: 50%;
+  width: min(360px, calc(100vw - 48px));
+  border: 1px solid rgba(32, 48, 45, 0.18);
+  border-radius: 8px;
+  padding: 18px;
+  background: rgba(246, 247, 245, 0.98);
+  box-shadow: 0 18px 50px rgba(29, 51, 44, 0.14);
+  text-align: left;
+  transform: translateX(-50%);
+}
+
+.score-popover-title {
+  margin: 0 0 12px;
+  color: #1d332c;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.score-popover ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.score-popover li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #2f3b39;
+  font-size: 0.98rem;
+}
+
+.score-popover strong {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(47, 111, 95, 0.28);
+  border-radius: 50%;
+  color: #1d332c;
+  font-size: 0.95rem;
+}
+
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -120,6 +199,15 @@ h2 {
   h2 {
     margin-top: 16px;
     font-size: 1.1rem;
+  }
+
+  .score-popover {
+    top: calc(100% + 12px);
+    padding: 16px;
+  }
+
+  .score-popover li {
+    font-size: 0.92rem;
   }
 
   .social-links {

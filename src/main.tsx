@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
@@ -39,12 +39,83 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+const apScores = [
+  "AP U.S. History",
+  "AP World History",
+  "AP Calculus BC",
+  "AP Biology",
+  "AP Physics",
+];
+
 function App() {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const awardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isPopoverOpen) {
+      return;
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      const target = event.target;
+
+      if (target instanceof Node && awardRef.current?.contains(target)) {
+        return;
+      }
+
+      setIsPopoverOpen(false);
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsPopoverOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPopoverOpen]);
+
   return (
     <main className="page-shell">
       <section className="intro" aria-labelledby="page-title">
         <h1 id="page-title">Nick Fiacco</h1>
-        <h2>National Merit Scholar 2012</h2>
+        <div className="award" ref={awardRef}>
+          <h2>
+            <button
+              className="award-trigger"
+              type="button"
+              aria-controls="ap-scores"
+              aria-expanded={isPopoverOpen}
+              onClick={() => setIsPopoverOpen((isOpen) => !isOpen)}
+            >
+              2012 National AP Scholar
+            </button>
+          </h2>
+          {isPopoverOpen && (
+            <div
+              className="score-popover"
+              id="ap-scores"
+              role="dialog"
+              aria-label="AP exam scores"
+            >
+              <p className="score-popover-title">AP Exam Scores</p>
+              <ul>
+                {apScores.map((exam) => (
+                  <li key={exam}>
+                    <span>{exam}</span>
+                    <strong>5</strong>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
         <nav className="social-links" aria-label="Links">
           {socialLinks.map(({ href, label, Icon, external }) => (
             <a
