@@ -42,9 +42,10 @@ const socialLinks: SocialLink[] = [
 const apScores = [
   "AP U.S. History",
   "AP World History",
-  "AP Calculus BC",
+  "AP Calculus AB/BC",
   "AP Biology",
   "AP Physics",
+  "AP English Language",
 ];
 
 function App() {
