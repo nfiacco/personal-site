@@ -22,13 +22,6 @@ function App() {
           >
             LinkedIn
           </a>
-          <a
-            href="https://www.producthunt.com/@nfiacco"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Product Hunt
-          </a>
         </div>
       </section>
     </main>
