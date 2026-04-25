@@ -9,7 +9,26 @@ function App() {
         <h1 id="page-title">National Merit Scholar 2012</h1>
         <div className="actions">
           <a href="mailto:nick@fiacco.com">Email</a>
-          <a href="https://fiacco.com">Main site</a>
+          <a href="https://github.com/nfiacco" rel="noreferrer" target="_blank">
+            GitHub
+          </a>
+          <a href="https://x.com/nick_fiacco" rel="noreferrer" target="_blank">
+            X
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nfiacco"
+            rel="noreferrer"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://www.producthunt.com/@nfiacco"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Product Hunt
+          </a>
         </div>
       </section>
     </main>
