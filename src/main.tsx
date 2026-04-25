@@ -45,7 +45,6 @@ const apScores = [
   "AP Calculus AB/BC",
   "AP Biology",
   "AP Physics",
-  "AP English Language",
 ];
 
 function App() {
