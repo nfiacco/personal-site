@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NF">
   <rect width="64" height="64" rx="14" fill="#f6f7f5" />
-  <rect x="4" y="4" width="56" height="56" rx="11" fill="none" stroke="#d7d2c5" stroke-width="2" />
-  <path fill="#1d332c" d="M13 47V17h7l25 22V17h6v30h-6L20 25v22z" />
-  <path fill="#b77b4f" d="M34 17h18v6H41v7h10v6H41v11h-7z" />
-  <path fill="#1d332c" d="M32 8l3 7-3 4-3-4z" opacity=".9" />
+  <text
+    x="32"
+    y="39"
+    fill="#1d332c"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="27"
+    font-weight="600"
+    letter-spacing="-2"
+    text-anchor="middle"
+  >NF</text>
 </svg>
