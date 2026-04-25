@@ -28,51 +28,73 @@ a {
   display: grid;
   min-height: 100vh;
   place-items: center;
-  padding: 32px;
+  padding: 48px 32px;
   background: #f6f7f5;
 }
 
 .intro {
-  width: min(100%, 760px);
+  width: min(100%, 920px);
   text-align: center;
 }
 
 h1 {
   margin: 0;
-  color: #162022;
-  font-size: clamp(2.75rem, 10vw, 6rem);
-  line-height: 1;
+  color: #1d332c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4.5rem, 14vw, 9rem);
+  font-weight: 500;
+  line-height: 0.92;
 }
 
-.actions {
-  justify-content: center;
+h2 {
+  margin: 24px 0 0;
+  color: #2f3b39;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 78px;
 }
 
-.actions a {
+.social-link {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  border: 1px solid rgba(31, 37, 40, 0.2);
-  border-radius: 8px;
-  padding: 0 18px;
-  background: rgba(255, 255, 255, 0.55);
-  font-weight: 700;
+  gap: 10px;
+  padding: 0 24px;
+  color: #20302d;
+  font-size: 1rem;
+  font-weight: 500;
   text-decoration: none;
-  transition:
-    border-color 160ms ease,
-    transform 160ms ease,
-    background 160ms ease;
+  transition: color 160ms ease, transform 160ms ease;
 }
 
-.actions a:hover,
-.actions a:focus-visible {
-  border-color: #24746d;
-  background: #ffffff;
+.social-link + .social-link {
+  border-left: 1px solid rgba(32, 48, 45, 0.25);
+}
+
+.social-link svg {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  color: #2f6f5f;
   transform: translateY(-1px);
+}
+
+.social-link:focus-visible {
+  border-radius: 6px;
+  outline: 2px solid rgba(47, 111, 95, 0.45);
+  outline-offset: 6px;
 }
 
 @media (max-width: 520px) {
@@ -80,11 +102,22 @@ h1 {
     padding: 24px;
   }
 
-  .actions {
-    flex-direction: column;
+  h1 {
+    font-size: clamp(3.5rem, 18vw, 5.75rem);
   }
 
-  .actions a {
+  .social-links {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 48px;
+  }
+
+  .social-link {
     justify-content: center;
+    padding: 0;
+  }
+
+  .social-link + .social-link {
+    border-left: 0;
   }
 }
