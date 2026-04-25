@@ -100,7 +100,7 @@ function App() {
         <div className="award" ref={awardRef}>
           <h2>
             <span className="award-text" ref={awardTextRef}>
-              2012 National AP Scholar
+              National AP Scholar 2012
             </span>
           </h2>
           {isPopoverOpen && (
