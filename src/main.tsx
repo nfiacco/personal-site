@@ -50,36 +50,48 @@ const apScores = [
 function App() {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const awardRef = useRef<HTMLDivElement>(null);
+  const awardTextRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!isPopoverOpen) {
-      return;
+    function selectionIncludesAward(range: Range) {
+      const awardTextNode = awardTextRef.current?.firstChild;
+
+      if (!awardTextNode) {
+        return false;
+      }
+
+      const awardRange = document.createRange();
+      awardRange.selectNodeContents(awardTextNode);
+
+      return (
+        range.compareBoundaryPoints(Range.START_TO_START, awardRange) <= 0 &&
+        range.compareBoundaryPoints(Range.END_TO_END, awardRange) >= 0
+      );
     }
 
-    function handlePointerDown(event: PointerEvent) {
-      const target = event.target;
+    function handleSelectionChange() {
+      const selection = window.getSelection();
 
-      if (target instanceof Node && awardRef.current?.contains(target)) {
+      if (!selection || selection.rangeCount === 0) {
+        setIsPopoverOpen(false);
         return;
       }
 
-      setIsPopoverOpen(false);
+      const isFullAwardSelected = Array.from(
+        { length: selection.rangeCount },
+        (_, index) =>
+          selection.getRangeAt(index),
+      ).some(selectionIncludesAward);
+
+      setIsPopoverOpen(isFullAwardSelected);
     }
 
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setIsPopoverOpen(false);
-      }
-    }
-
-    document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("selectionchange", handleSelectionChange);
 
     return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("selectionchange", handleSelectionChange);
     };
-  }, [isPopoverOpen]);
+  }, []);
 
   return (
     <main className="page-shell">
@@ -87,15 +99,9 @@ function App() {
         <h1 id="page-title">Nick Fiacco</h1>
         <div className="award" ref={awardRef}>
           <h2>
-            <button
-              className="award-trigger"
-              type="button"
-              aria-controls="ap-scores"
-              aria-expanded={isPopoverOpen}
-              onClick={() => setIsPopoverOpen((isOpen) => !isOpen)}
-            >
+            <span className="award-text" ref={awardTextRef}>
               2012 National AP Scholar
-            </button>
+            </span>
           </h2>
           {isPopoverOpen && (
             <div
