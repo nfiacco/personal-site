@@ -1,4 +1,4 @@
-import { StrictMode, useEffect, useRef, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
@@ -39,89 +39,11 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-const apScores = [
-  "AP U.S. History",
-  "AP World History",
-  "AP Calculus AB/BC",
-  "AP Biology",
-  "AP Physics",
-];
-
 function App() {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const awardRef = useRef<HTMLDivElement>(null);
-  const awardTextRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    function selectionIncludesAward(range: Range) {
-      const awardTextNode = awardTextRef.current?.firstChild;
-
-      if (!awardTextNode) {
-        return false;
-      }
-
-      const awardRange = document.createRange();
-      awardRange.selectNodeContents(awardTextNode);
-
-      return (
-        range.compareBoundaryPoints(Range.START_TO_START, awardRange) <= 0 &&
-        range.compareBoundaryPoints(Range.END_TO_END, awardRange) >= 0
-      );
-    }
-
-    function handleSelectionChange() {
-      const selection = window.getSelection();
-
-      if (!selection || selection.rangeCount === 0) {
-        setIsPopoverOpen(false);
-        return;
-      }
-
-      const isFullAwardSelected = Array.from(
-        { length: selection.rangeCount },
-        (_, index) =>
-          selection.getRangeAt(index),
-      ).some(selectionIncludesAward);
-
-      setIsPopoverOpen(isFullAwardSelected);
-    }
-
-    document.addEventListener("selectionchange", handleSelectionChange);
-
-    return () => {
-      document.removeEventListener("selectionchange", handleSelectionChange);
-    };
-  }, []);
-
   return (
     <main className="page-shell">
       <section className="intro" aria-labelledby="page-title">
         <h1 id="page-title">Nick Fiacco</h1>
-        <div className="award" ref={awardRef}>
-          <h2>
-            <span className="award-text" ref={awardTextRef}>
-              National AP Scholar 2012
-            </span>
-          </h2>
-          {isPopoverOpen && (
-            <div
-              className="score-popover"
-              id="ap-scores"
-              role="dialog"
-              aria-label="AP exam scores"
-            >
-              <p className="score-popover-title">AP Exam Scores</p>
-              <ul>
-                {apScores.map((exam) => (
-                  <li key={exam}>
-                    <span>{exam}</span>
-                    <strong>5</strong>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
         <nav className="social-links" aria-label="Links">
           {socialLinks.map(({ href, label, Icon, external }) => (
             <a
