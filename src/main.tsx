@@ -1,8 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import type { IconType } from "react-icons";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import "./styles.css";
 
 type SocialLink = {
@@ -26,9 +25,9 @@ const socialLinks: SocialLink[] = [
     external: true,
   },
   {
-    href: "https://x.com/nick_fiacco",
-    label: "X",
-    Icon: FaXTwitter,
+    href: "https://twitter.com/nick_fiacco",
+    label: "Twitter",
+    Icon: FaTwitter,
     external: true,
   },
 ];
