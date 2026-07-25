@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { MdOutlineMail } from "react-icons/md";
 import "./styles.css";
 
 type SocialLink = {
@@ -31,11 +30,6 @@ const socialLinks: SocialLink[] = [
     label: "X",
     Icon: FaXTwitter,
     external: true,
-  },
-  {
-    href: "mailto:nick@fiacco.com",
-    label: "Email",
-    Icon: MdOutlineMail,
   },
 ];
 
